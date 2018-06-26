@@ -1,4 +1,4 @@
-[The bulk of these instructions came from this site](https://www.pyimagesearch.com/2017/09/27/setting-up-ubuntu-16-04-cuda-gpu-for-deep-learning-with-python/)
+# [The bulk of these instructions came from this site](https://www.pyimagesearch.com/2017/09/27/setting-up-ubuntu-16-04-cuda-gpu-for-deep-learning-with-python/)
 
 Today, we will configure Ubuntu + NVIDIA GPU + CUDA with everything you need to be successful when training your own deep learning networks on your GPU.
 
@@ -12,48 +12,7 @@ Links to related tutorials can be found here:
 
 If you have an NVIDIA CUDA compatible GPU, you can use this tutorial to configure your deep learning development to train and execute neural networks on your optimized GPU hardware.
 
-Let’s go ahead and get started!
-
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with Python
-If you’ve reached this point, you are likely serious about deep learning and want to train your neural networks with a GPU.
-
-Graphics Processing Units are great at deep learning for their parallel processing architecture — in fact, these days there are many GPUs built specicically for deep learning — they are put to use outside the domain of computer gaming.
-
-NVIDIA is the market leader in deep learning hardware, and quite frankly the primary option I recommend if you are getting in this space. It is worth getting familiar with their lineup of products (hardware and software) so you know what you’re paying for if you’re using an instance in the cloud or building a machine yourself. Be sure to check out this developer page.
-
-It is common to share high end GPU machines at universities and companies. Alternatively, you may build one, buy one (as I did), or rent one in the cloud (as I still do today).
-
-If you are just doing a couple experiments then using a cloud service provider such as Amazon, Google, or FloydHub for a time-based usage charge is the way to go.
-
-Longer term if you are working on deep learning experiments daily, then it would be wise to have one on hand for cost savings purposes (assuming you’re willing to keep the hardware and software updated regularly).
-
-Note: For those utilizing AWS’s EC2, I recommend you select the p2.xlarge, p2.8xlarge, or p2.16xlarge machines for compatibility with these instructions (depending on your use case scenario and budget). The older instances, g2.2xlarge and g2.8xlarge are not compatible with the version of CUDA and cuDNN in this tutorial. I also recommend that you have about 32GB of space on your OS drive/partition. 16GB didn’t cut it for me on my EC2 instance.
-
-It is important to point out that you don’t need access to an expensive GPU machine to get started with Deep Learning. Most modern laptop CPUs will do just fine with the small experiments presented in the early chapters in my book. As I say, “fundamentals before funds” — meaning, get acclimated with modern deep learning fundamentals and concepts before you bite off more than you can chew with expensive hardware and cloud bills. My book will allow you to do just that.
-
-How hard is it to configure Ubuntu with GPU support for deep learning?
-You’ll soon find out below that configuring a GPU machine isn’t a cakewalk. In fact there are quite a few steps and potential for things to go sour. That’s why I have built a custom Amazon Machine Instance (AMI) pre-configured and pre-installed for the community to accompany my book.
-
-I detailed how to get it loaded into your AWS account and how to boot it up in this previous post.
-
-Using the AMI is by far the fastest way to get started with deep learning on a GPU. Even if you do have a GPU, it’s worth experimenting in the Amazon EC2 cloud so you can tear down an instance (if you make a mistake) and then immediately boot up a new, fresh one.
-
-Configuring an environment on your own is directly related to your:
-
-Experience with Linux
-Attention to detail
-Patience.
-First, you must be very comfortable with the command line.
-
-Many of the steps below have commands that you can simply copy and paste into your terminal; however it is important that you read the output, note any errors, try to resolve them prior to moving on to the next step.
-
-You must pay particular attention to the order of the instructions in this tutorial, and furthermore pay attention to the commands themselves.
-
-I actually do recommend copying and pasting to make sure you don’t mess up a command (in one case below backticks versus quotes could get you stuck).
-
-If you’re up for the challenge, then I’ll be right there with you getting your environment ready. In fact I encourage you to leave comments so that the PyImageSearch community can offer you assistance. Before you leave a comment be sure to review the post and comments to make sure you didn’t leave a step out.
-
-Without further ado, let’s get our hands dirty and walk through the configuration steps.
+# Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with Python
 
 Step #0: Turn off X server/X window system
 Before we get started I need to point out an important prerequisite. You need to perform one of the following prior to following the instructions below:

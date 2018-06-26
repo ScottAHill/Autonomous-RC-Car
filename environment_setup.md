@@ -1,4 +1,4 @@
-# [The bulk of these instructions came from this site](https://www.pyimagesearch.com/2017/09/27/setting-up-ubuntu-16-04-cuda-gpu-for-deep-learning-with-python/)
+**[The bulk of these instructions came from this site](https://www.pyimagesearch.com/2017/09/27/setting-up-ubuntu-16-04-cuda-gpu-for-deep-learning-with-python/)**
 
 How to configure Ubuntu + NVIDIA GPU + CUDA with everything you need to be successful when training your own deep learning networks on your GPU.
 
@@ -23,25 +23,27 @@ Before we get started I need to point out an important prerequisite. You need to
 
 There are a few methods to accomplish this, some easy and others a bit more involved.
 
-The first method is a bit of a hack, but it works:
+The **first method** is a bit of a hack, but it works:
 
-Turn off your machine.
-Unplug your monitor.
-Reboot.
-SSH into your machine from a separate system.
-Perform the install instructions.
+1. Turn off your machine.
+1. Unplug your monitor.
+1. Reboot.
+1. SSH into your machine from a separate system.
+1. Perform the install instructions.
+
 This approach works great and is by far the easiest method. By unplugging your monitor X server will not automatically start. From there you can SSH into your machine from a separate computer and follow the instructions outline in this post.
 
-The second method assumes you have already booted the machine you want to configure for deep learning:
+The **second method** assumes you have already booted the machine you want to configure for deep learning:
 
-Close all running applications.
-Press ctrl + alt + F2 .
-Login with your username and password.
-Stop X server by executing sudo service lightdm stop .
-Perform the install instructions.
+1. Close all running applications.
+1. Press ctrl + alt + F2 .
+1. Login with your username and password.
+1. Stop X server by executing sudo service lightdm stop .
+1. Perform the install instructions.
+
 Please note that you’ll need a separate computer next to you to read the instructions or execute the commands. Alternatively you could use a text-based web browser.
 
-Step #1: Install Ubuntu system dependencies
+## Step #1: Install Ubuntu system dependencies
 Now that we’re ready, let’s get our Ubuntu OS up to date:
 
 Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell

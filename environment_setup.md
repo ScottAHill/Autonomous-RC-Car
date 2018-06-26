@@ -1,11 +1,12 @@
-https://www.pyimagesearch.com/2017/09/27/setting-up-ubuntu-16-04-cuda-gpu-for-deep-learning-with-python/
+[The bulk of these instructions came from this site](https://www.pyimagesearch.com/2017/09/27/setting-up-ubuntu-16-04-cuda-gpu-for-deep-learning-with-python/)
 
 Today, we will configure Ubuntu + NVIDIA GPU + CUDA with everything you need to be successful when training your own deep learning networks on your GPU.
 
 Links to related tutorials can be found here:
 
-Your deep learning + Python Ubuntu virtual machine https://www.pyimagesearch.com/2017/09/22/deep-learning-python-ubuntu-virtual-machine/
-Pre-configured Amazon AWS deep learning AMI with Python https://www.pyimagesearch.com/2017/09/20/pre-configured-amazon-aws-deep-learning-ami-with-python/
+[Your deep learning + Python Ubuntu virtual machine](https://www.pyimagesearch.com/2017/09/22/deep-learning-python-ubuntu-virtual-machine/)
+
+[Pre-configured Amazon AWS deep learning AMI with Python](https://www.pyimagesearch.com/2017/09/20/pre-configured-amazon-aws-deep-learning-ami-with-python/)
 Configuring Ubuntu for deep learning with Python (for a CPU only environment) https://www.pyimagesearch.com/2017/09/25/configuring-ubuntu-for-deep-learning-with-python/
 Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with Python (this post)
 Configuring macOS for deep learning with Python (releasing on Friday)

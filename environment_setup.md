@@ -67,16 +67,14 @@ $ sudo apt-get install python-tk python3-tk python-imaging-tk
 
 Next, let’s install both Python 2.7 and Python 3 header files so that we can compile OpenCV with Python bindings:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ sudo apt-get install python2.7-dev python3-dev
 ```
 
 We also need to prepare our system to swap out the default drivers with NVIDIA CUDA drivers:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ sudo apt-get install linux-image-generic linux-image-extra-virtual
 $ sudo apt-get install linux-source linux-headers-generic
@@ -89,8 +87,7 @@ The CUDA Toolkit installation step requires attention to detail for it to go smo
 
 First disable the Nouveau kernel driver by creating a new file:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ sudo nano /etc/modprobe.d/blacklist-nouveau.conf
 ```
@@ -98,8 +95,7 @@ Feel free to use your favorite terminal text editor such as vim  or emacs  inste
 
 Add the following lines and then save and exit:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 blacklist nouveau
 blacklist lbm-nouveau
@@ -115,8 +111,7 @@ Figure 1: Editing the blacklist-nouveau.conf file with the nano text editor.
 
 Next let’s update the initial RAM filesystem and reboot the machine:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
 $ sudo update-initramfs -u
@@ -138,8 +133,7 @@ Figure 2: The CUDA Toolkit download page.
 
 From there, download the -run  file which should have the filename cuda_8.0.61_375.26_linux-run  or similar. To do this, simply right-click to copy the download link and use wget  on your remote GPU box:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
 ```
@@ -150,8 +144,7 @@ Note: You will need to click the “<=>” button in the code block toolbar abov
 
 From there, unpack the -run  file:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ chmod +x cuda_8.0.61_375.26_linux-run
 $ mkdir installers
@@ -162,8 +155,7 @@ The last step in the block above can take 30-60 seconds depending on the speed o
 
 Now it is time to install the NVIDIA kernel driver:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ cd installers
 $ sudo ./NVIDIA-Linux-x86_64-375.26.run
@@ -176,16 +168,14 @@ Figure 3: Accepting the NVIDIA End User License Agreement.
 
 From there, add the NVIDIA loadable kernel module (LKM) to the Linux kernel:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ modprobe nvidia
 ```
 
 Install the CUDA Toolkit and examples:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ sudo ./cuda-linux64-rel-8.0.61-21551265.run
 $ sudo ./cuda-samples-linux-8.0.61-21551265.run
@@ -195,8 +185,7 @@ Again, accepting the licenses and following the default prompts. You may have to
 
 Now that the NVIDIA CUDA driver and tools are installed, you need to update your ~/.bashrc  file to include CUDA Toolkit (I suggest using terminal text editors such as vim , emacs , or  nano ):
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 # NVIDIA CUDA Toolkit
 export PATH=/usr/local/cuda-8.0/bin:$PATH
@@ -205,8 +194,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64/
 
 Now, reload your ~/.bashrc  ( source ~/.bashrc ) and then test the CUDA Toolkit installation by compiling the deviceQuery  example program and running it:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ source ~/.bashrc
 $ cd /usr/local/cuda-8.0/samples/1_Utilities/deviceQuery
@@ -231,8 +219,7 @@ Due to NVIDIA’s required authentication to access the download, you may not be
 
 Instead, download the file to your local machine and then (on your local machine) use scp  (Secure Copy) while replacing <username> and <password>  with appropriate values to update the file to your remote instance (again, assuming you’re accessing your machine via SSH):
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 scp -i EC2KeyPair.pem ~/Downloads/cudnn-8.0-linux-x64-v6.0.tgz \
 	username@your_ip_address:~
@@ -240,8 +227,7 @@ scp -i EC2KeyPair.pem ~/Downloads/cudnn-8.0-linux-x64-v6.0.tgz \
 
 Next, untar the file and then copy the resulting files into lib64  and  include  respectively, using the -P  switch to preserve sym-links:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ cd ~
 $ tar -zxf cudnn-8.0-linux-x64-v6.0.tgz
@@ -259,8 +245,7 @@ In this section we will get a Python virtual environment configured on your syst
 Installing pip
 The first step is to install pip , a Python package manager:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ wget https://bootstrap.pypa.io/get-pip.py
 $ sudo python get-pip.py
@@ -276,8 +261,7 @@ The folks over at RealPython may be able to convince you if I haven’t, so give
 
 Again, let me reiterate that it’s standard practice in the Python community to be leveraging virtual environments of some sort, so I suggest you do the same:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ sudo pip install virtualenv virtualenvwrapper
 $ sudo rm -rf ~/.cache/pip get-pip.py
@@ -285,8 +269,7 @@ $ sudo rm -rf ~/.cache/pip get-pip.py
 
 Once we have  virtualenv  and  virtualenvwrapper  installed, we need to update our ~/.bashrc  file to include the following lines at the bottom of the file:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 # virtualenv and virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
@@ -296,8 +279,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 After editing our ~/.bashrc  file, we need to reload the changes:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ source ~/.bashrc
 ```
@@ -309,8 +291,7 @@ In past install tutorials, I’ve presented the choice of Python 2.7 or Python 3
 
 With that said, for the following command, ensure you set the -p  flag to python3 .
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ mkvirtualenv dl4cv -p python3
 ```
@@ -320,8 +301,7 @@ You can name this virtual environment whatever you like (and create as many Pyth
 Verifying that you are in the “dl4cv” virtual environment
 If you ever reboot your Ubuntu system; log out and log back in; or open up a new terminal, you’ll need to use the workon  command to re-access your dl4cv  virtual environment. An example of the workon  command follows:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ workon dl4cv
 ```
@@ -341,8 +321,7 @@ The final step before we compile OpenCV is to install NumPy, a Python package us
 
 From there execute the following command:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ pip install numpy
 ```
@@ -352,8 +331,7 @@ Once NumPy is installed in your virtual environment, we can move on to compile a
 Step #5: Compile and Install OpenCV
 First you’ll need to download opencv and opencv_contrib into your home directory. For this install guide, we’ll be using OpenCV 3.3:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ cd ~
 $ wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.3.0.zip
@@ -362,8 +340,7 @@ $ wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.
 
 Then, unzip both files:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ unzip opencv.zip
 $ unzip opencv_contrib.zip
@@ -372,8 +349,7 @@ $ unzip opencv_contrib.zip
 Running CMake
 In this step we create a build directory and then run CMake:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ cd ~/opencv-3.3.0/
 $ mkdir build
@@ -408,8 +384,7 @@ If this is the case, access the dl4cv  virtual environment using workon dl4cv  a
 Compiling OpenCV
 Now we are now ready to compile OpenCV :
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ make -j4
 ```
@@ -418,8 +393,7 @@ Note: If you run into compilation errors, you may run the command make clean  an
 
 From there, all you need to do is to install OpenCV 3.3:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ sudo make install
 $ sudo ldconfig
@@ -431,8 +405,7 @@ You can also delete your opencv  and opencv_contrib  directories to free up spac
 Symbolic linking OpenCV to your virtual environment
 To sym-link our OpenCV bindings into the dl4cv  virtual environment, issue the following commands
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ cd ~/.virtualenvs/dl4cv/lib/python3.5/site-packages/
 $ ln -s /usr/local/lib/python3.5/site-packages/cv2.cpython-35m-x86_64-linux-gnu.so cv2.so
@@ -446,8 +419,7 @@ Your .so  file may be some variant of what is shown above, so be sure to use the
 Testing your OpenCV 3.3 install
 Now that we’ve got OpenCV 3.3 installed and linked, let’s do a quick sanity test to see if things work:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonPython
-
+**Python**
 ```
 $ python
 >>> import cv2
@@ -471,8 +443,7 @@ For this step, make sure that you are in the dl4cv  environment by issuing the w
 
 From there we can install some required computer vision, image processing, and machine learning libraries:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ pip install scipy matplotlib pillow
 $ pip install imutils h5py requests progressbar2
@@ -481,16 +452,14 @@ $ pip install scikit-learn scikit-image
 
 Next, install Tensorflow (GPU version):
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ pip install tensorflow-gpu
 ```
 
 You can verify that TensorFlow has been installed by importing it in your Python shell:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonPython
-
+**Python**
 ```
 $ python
 >>> import tensorflow
@@ -499,16 +468,14 @@ $ python
 
 Now we’re ready to install Keras:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ pip install keras
 ```
 
 Again, you can verify Keras has been installed via your Python shell:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonPython
-
+**Python**
 ```
 $ python
 >>> import keras
@@ -519,8 +486,6 @@ Using TensorFlow backend.
 You should see that Keras has been imported with no errors and the TensorFlow backend is being used.
 
 Before you move on to Step #7, take a second to familiarize yourself with the ~/.keras/keras.json  file:
-
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with Python
 
 ```
 {
@@ -540,8 +505,7 @@ This step is only required for readers who purchased a copy of the ImageNet Bund
 
 Either way, let’s first clone the mxnet repository and checkout branch 0.11.0 :
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ cd ~
 $ git clone --recursive https://github.com/apache/incubator-mxnet.git mxnet --branch 0.11.0
@@ -549,8 +513,7 @@ $ git clone --recursive https://github.com/apache/incubator-mxnet.git mxnet --br
 
 We can them compile mxnet:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ cd mxnet
 $ make -j4 USE_OPENCV=1 USE_BLAS=openblas USE_CUDA=1 USE_CUDA_PATH=/usr/local/cuda USE_CUDNN=1
@@ -558,8 +521,7 @@ $ make -j4 USE_OPENCV=1 USE_BLAS=openblas USE_CUDA=1 USE_CUDA_PATH=/usr/local/cu
 
 Followed by sym-linking to our dl4cv environment.
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ cd ~/.virtualenvs/dl4cv/lib/python3.5/site-packages/
 $ ln -s ~/mxnet/python/mxnet mxnet
@@ -568,8 +530,7 @@ $ cd ~
 
 Finally, you may fire up Python in your environment to test that the installation was successful:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
 ```
 $ python
 >>> import mxnet

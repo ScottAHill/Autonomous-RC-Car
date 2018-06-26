@@ -46,14 +46,13 @@ Please note that you’ll need a separate computer next to you to read the instr
 ## Step #1: Install Ubuntu system dependencies
 Now that we’re ready, let’s get our Ubuntu OS up to date:
 
-Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell
-
+**Shell**
+```
 $ sudo apt-get update
 $ sudo apt-get upgrade
-1
-2
 $ sudo apt-get update
 $ sudo apt-get upgrade
+```
 Then, let’s install some necessary development tools, image/video I/O, GUI operations and various other packages:
 
 Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with PythonShell

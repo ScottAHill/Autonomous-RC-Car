@@ -1,6 +1,6 @@
 # [The bulk of these instructions came from this site](https://www.pyimagesearch.com/2017/09/27/setting-up-ubuntu-16-04-cuda-gpu-for-deep-learning-with-python/)
 
-Today, we will configure Ubuntu + NVIDIA GPU + CUDA with everything you need to be successful when training your own deep learning networks on your GPU.
+How to configure Ubuntu + NVIDIA GPU + CUDA with everything you need to be successful when training your own deep learning networks on your GPU.
 
 Links to related tutorials can be found here:
 
@@ -14,11 +14,13 @@ If you have an NVIDIA CUDA compatible GPU, you can use this tutorial to configur
 
 # Setting up Ubuntu 16.04 + CUDA + GPU for deep learning with Python
 
-Step #0: Turn off X server/X window system
+## Step #0: Turn off X server/X window system
+
 Before we get started I need to point out an important prerequisite. You need to perform one of the following prior to following the instructions below:
 
-SSH into your GPU instance (with X server off/disabled).
-Work directly on your GPU machine without your X server running (the X server, also known as X11, is your graphical user interface on the desktop). I suggest you try one of the methods outlined on this thread.
+* SSH into your GPU instance (with X server off/disabled).
+* Work directly on your GPU machine without your X server running (the X server, also known as X11, is your graphical user interface on the desktop). I suggest you try one of the methods outlined on [this thread](https://askubuntu.com/questions/378046/how-to-run-ubuntu-xubuntu-in-a-complete-non-gui-mode).
+
 There are a few methods to accomplish this, some easy and others a bit more involved.
 
 The first method is a bit of a hack, but it works:
